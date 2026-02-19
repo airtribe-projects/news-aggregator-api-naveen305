@@ -2,15 +2,24 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
-
+const userRoutes = require('./routes/user.routes')
 dotenv.config();
 
 
-const port = process.env.PORT || 3000;
 
+//Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+
+
+//Routes
+app.use('/', userRoutes)
+
+
+
+const port = process.env.PORT || 3000;
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     app.listen(port, (err) => {
