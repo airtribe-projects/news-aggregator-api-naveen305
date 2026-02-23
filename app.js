@@ -3,6 +3,8 @@ const app = express();
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user.routes')
+const preferenceRoutes  = require('./routes/preference.routes')
+
 dotenv.config();
 
 
@@ -16,6 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 
 //Routes
 app.use('/', userRoutes)
+app.use('/', preferenceRoutes)
+
 
 
 
