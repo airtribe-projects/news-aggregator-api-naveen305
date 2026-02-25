@@ -4,7 +4,7 @@ const preferenceServices = require('../services/preference.service')
 const getPreferences = async (req, res) => {
     try {
         const preferences = await preferenceServices.getPreferences(req.user.id)
-        res.status(200).json({ status: true, data: preferences });
+        res.status(200).json({  preferences: preferences });
 
     } catch (err) {
         res.status(400).json({ "status": false, "message": err.message })

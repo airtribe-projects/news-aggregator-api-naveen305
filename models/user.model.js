@@ -17,13 +17,17 @@ const allowedCategories = [
     "technology"
 ];
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
         unique: true,
         required: true,
         trim: true,
-        lowercase: true
+        lowercase: true,
+        match: [emailRegex, "Please enter a valid email address"]
     },
     password: {
         type: String,
@@ -31,20 +35,22 @@ const userSchema = new mongoose.Schema({
         minlength: [6, 'Password must be at least 6 characters']
     },
     preferences: {
-        categories: {
-            type: [{
-                type: String,
-                enum: allowedCategories
-            }],
-            default: []
-        },
-        languages: {
-            type: [{
-                type: String,
-                enum: allowedLanguages
-            }],
-            default: []
-        }
+        // categories: {
+        //     type: [{
+        //         type: String,
+        //         enum: allowedCategories
+        //     }],
+        //     default: []
+        // },
+        // languages: {
+        //     type: [{
+        //         type: String,
+        //         enum: allowedLanguages
+        //     }],
+        //     default: []
+        // }
+        type: [String],
+        default: []
     }
 }, { timestamps: true })
 

@@ -19,8 +19,8 @@ app.use(express.urlencoded({ extended: true }));
 
 
 //Routes
-app.use('/', userRoutes)
-app.use('/', preferenceRoutes)
+app.use('/users', userRoutes)
+app.use('/users', preferenceRoutes)
 app.use("/", newsRoutes);
 
 

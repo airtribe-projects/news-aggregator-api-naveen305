@@ -15,7 +15,9 @@ const createUser = async (userData) => {
           })
           return {
                id: newUser._id,
-               email: newUser.email
+               email: newUser.email,
+               preferences: newUser.preferences
+
           }
 
      } catch (err) {
@@ -32,7 +34,7 @@ const loginUser = async (userData) => {
           }
           const { email, password } = userData
 
-          const findUser = await User.findOne({ email })
+          const findUser = await User.findOne({ email: email.toLowerCase()  })
           if (!findUser) {
                throw new Error('Invalid Credentials')
           }

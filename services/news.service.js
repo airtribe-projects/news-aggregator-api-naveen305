@@ -8,6 +8,7 @@ const fetchNews = async (userId) => {
         throw new Error('User not found');
     }
     const { categories, languages } = user.preferences;
+    
     const language = languages?.[0] || "en";
     let allArticles = [];
     if (!categories || categories.length === 0) {
